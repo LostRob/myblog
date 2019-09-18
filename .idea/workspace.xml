@@ -1,149 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80f5873a-a0c3-4edc-8e6c-ed92e9553212" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/myblog.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/migrations/0002_auto_20190819_2123.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/search_indexes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/templatetags/simple_tags.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Blog/whoosh_cn_backend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Comment/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Comment/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Comment/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Comment/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Comment/migrations/0002_auto_20190823_1238.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Comment/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Comment/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Comment/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Comment/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Comment/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Post/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Post/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Post/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Post/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Post/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Post/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Post/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Post/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Post/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/css/code.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/css/faces.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/css/normalize.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/images/userpic.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/js/detail-js.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/js/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/js/snap.svg-min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/scss/_core.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/scss/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Blog/scss/style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/css/fontawesome-all.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/css/magnific-popup.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/css/tooplate-style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/Thumbs.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/constructive_bg_01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/constructive_bg_02.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/constructive_bg_03.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/constructive_bg_04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-01-tn.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-02-tn.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-02.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-03-tn.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-03.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-04-tn.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-05-tn.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-05.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-06-tn.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/gallery-img-06.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/nav-item-highlight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/img/nav-item.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/js/jquery-3.2.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/js/jquery.backstretch.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/js/jquery.magnific-popup.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/ajax-loader.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/config.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/fonts/slick.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/fonts/slick.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/fonts/slick.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/fonts/slick.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/slick-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/slick-theme.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/slick-theme.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/slick.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/slick.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/slick.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/slick.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/slick/slick.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-brands-400.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-brands-400.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-brands-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-brands-400.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-brands-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-regular-400.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-regular-400.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-regular-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-regular-400.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-regular-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-solid-900.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-solid-900.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-solid-900.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-solid-900.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Post/webfonts/fa-solid-900.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/blogging.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/catview.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/detail_base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/examples.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/login/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/login/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/one-column.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/search/indexes/Blog/blog_text.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/search/search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/tagsview.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/text.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/three-column.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/whoosh_index/MAIN_5ssox683vpppalqn.seg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/whoosh_index/MAIN_845jetvisb2fg4n0.seg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/whoosh_index/MAIN_WRITELOCK" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/whoosh_index/MAIN_m6lsg3gbpx6kb6oh.seg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/whoosh_index/MAIN_nahf5mpgtxwu796r.seg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/whoosh_index/_MAIN_74.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/最新评论.txt" afterDir="false" />
-    </list>
+    <list default="true" id="80f5873a-a0c3-4edc-8e6c-ed92e9553212" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +50,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/index2.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
+                <state relative-caret-position="139">
                   <caret line="98" column="27" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
                 </state>
               </provider>
@@ -207,6 +65,15 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="494">
                   <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/myblog/settings.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="969">
+                  <caret line="144" column="24" selection-start-line="144" selection-start-column="24" selection-end-line="144" selection-end-column="24" />
                 </state>
               </provider>
             </entry>
@@ -241,7 +108,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Blog/views.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="285">
@@ -372,7 +239,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="51" />
     <option name="width" value="1835" />
     <option name="height" value="1040" />
@@ -389,16 +256,6 @@
             <path>
               <item name="myblog" type="b2602c69:ProjectViewProjectNode" />
               <item name="myblog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myblog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="Blog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myblog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="myblog" type="b2602c69:ProjectViewProjectNode" />
@@ -522,17 +379,26 @@
       <workItem from="1568627772532" duration="3446000" />
       <workItem from="1568659836821" duration="6616000" />
       <workItem from="1568769330859" duration="683000" />
-      <workItem from="1568776736727" duration="254000" />
+      <workItem from="1568776736727" duration="1031000" />
     </task>
+    <task id="LOCAL-00001" summary="你好">
+      <created>1568777154846</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1568777154846</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207710000" />
+    <option name="totallyTimeSpent" value="208487000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="41" y="0" width="1468" height="832" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12553191" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12553191" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -545,7 +411,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" side_tool="true" visible="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -580,6 +446,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="你好" />
+    <option name="LAST_COMMIT_MESSAGE" value="你好" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/index.html">
@@ -774,13 +644,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="144" column="24" selection-start-line="144" selection-start-column="24" selection-end-line="144" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/login/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -879,15 +742,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="139">
           <caret line="98" column="27" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Blog/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -939,6 +795,20 @@
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Blog/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="144" column="24" selection-start-line="144" selection-start-column="24" selection-end-line="144" selection-end-column="24" />
         </state>
       </provider>
     </entry>
