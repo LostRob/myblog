@@ -1,0 +1,482 @@
+{% load staticfiles %}
+{% load simple_tags %}
+
+<!doctype html>
+<html lang="en">
+	<head>
+        <title>Home</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+        <!-- Main CSS --> 
+        <link rel="stylesheet" href="{% static 'Blog/css/style.css' %}">
+        <!-- <link rel="stylesheet" href="{% static 'Blog/css/code.css' %}"> -->
+        <!-- Font Awesome -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+  
+    <body>
+
+        <!-- Header -->
+        <div class="header-wrap d-none d-md-block">
+            <div class="container">
+                <div class="row">
+                    
+                    <!-- Left header box -->
+                    <header class="col-6 text-left">
+                        <h1>MySpace</h1>
+                    </header>
+                    
+                    <!-- Right header box -->
+                    <div class="col-6 text-right">               
+                        <p class="header-social-icons social-icons">
+                            <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-youtube fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Main navigation -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+            <div class="container">
+                
+                <!-- Company name shown on mobile -->
+                <a class="navbar-brand d-md-none d-lg-none d-xl-none" href="#">MySpace</a>
+
+
+                <!-- Mobile menu toggle -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Main navigation items -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                                <a class="nav-link" href="{% url 'Blog:index2' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+
+
+
+                        <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">文章类型 / Categories</a>
+                                    <div class="dropdown-menu navbar-dark bg-primary">
+                                        {% get_categories as category_list %}{% for category in category_list %}<a class='dropdown-item'href="{% url 'Blog:category' category.pk %}">{{ category.name }}</a>{% endfor %}
+                                    </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">标签 / Tags</a>
+                                    <div class="dropdown-menu navbar-dark bg-primary">
+                                        {% get_tags as tag_list %}{% for tag in tag_list %}<a class='dropdown-item'href="{% url 'Blog:tag' tag.pk %}">{{ tag.name }}</a>{% endfor %}
+                                    </div>
+                        </li>
+
+
+
+                        <li class="nav-item">
+                                <a class="nav-link" href="#">Services</a>
+                        </li>
+
+                        <li class="nav-item">
+                                <a class="nav-link" href="#">Products</a>
+                        </li>
+
+                        <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                    
+                    <form class="form-inline header-search-form my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" size="10"  placeholder="Search" aria-label="Search">
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Jumbtron / Slider -->
+        <div class="jumbotron-wrap">
+            <div class="container">
+                <div class="jumbotron">
+                    <h1 class="text-center">One column layout / 单列布局</h1>
+                    <p class="lead text-center">With a static slider / 静态滑块.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content area -->
+        <main class="container">
+            <div class="row">
+                <!-- Main content -->
+                <div class="col">
+
+
+                    <article>
+                        <h2 class="article-title">{{ blog.title }}</h2>
+                        <p class="article-meta">Posted by <strong href="#" rel="author">Robert</strong> · Filed under <strong>{{ blog.category.name }}</strong></p>
+                        <p>{{ blog.body | safe}}</p>
+                        <p>Tagged:
+                            {%  for tag in blog.tags.all  %}
+                                <button type="button" class="btn btn-light" href="#">{{ tag.name }}</button>
+                            {% endfor %}
+                        </p>
+                        <p> {{ blog.modified_time }} </p>
+
+                        <a class="btn btn-dark" href='{% url 'Blog:index2' %}'>Back</a>
+
+                        <p>&nbsp;</p>
+
+                        <h2><span>{{ blog.comment_set.count }}</span> Responses</h2>
+                        <div class='clr'></div>
+
+
+                        {% for comment in comment_list %}
+                        <div class = 'comment'>
+                            <a href="#"><img src ='{% static 'Blog/images/userpic.gif' %}' width="40" height="40" alt="user" class="userpic"/></a>
+                            <p><a href="#">{{ comment.name }}</a> Says:<br/></p>
+                            <p>{{ comment.text | safe }}</p>
+                            <p>{{ comment.created_time }}</p>
+
+                        </div>
+                        {% endfor %}
+
+                        <!--
+                        <div class="comment-list-box">
+                            <h2>评论</h2>
+                            {% for comment in blog.comment_set.all %}
+                            {% endfor %}
+                            {% for comment in comment_list %}
+                               <ul class="comment-list ">
+                                   <h class="comment-li first-comment" onmouseover="show_reply(this)"
+                                       onmouseleave="hidden_replay(this)">
+                                       <i class="fa fa-user-circle"></i>
+                                       <span>{{ comment.name }}：</span>
+                                       <a class="reply" href='javascript:void(0);' onclick="show_replyform(this)" >回复</a>
+                                       <div class="comment-info">{{ comment.text | safe }}</div>
+
+                                       <form class="pure-form reply-form" id="reply-form" method="post"
+                                             action="{% url 'Comment:comment' blog_id=blog.id %}" style=" display: none">
+                                           <input hidden name="reply_to" value="{{ comment.id }}">
+                                           <input hidden name="reply_name" value="{{ comment.name }}">
+                                           <input hidden name="root_to" value="{{ comment.id }}">
+                                           <input hidden name="reply_email" value="{{ comment.email }}">
+                                           <fieldset class="pure-group">
+                                               昵称：<input class="pure-input-1-4" name="comment-name" type="text" placeholder="昵称">
+                                               &nbsp;&nbsp;
+                                               邮箱：<input class="pure-input-1-3" name="comment-email" type="email"
+                                                         placeholder="留下邮箱，可以收到回复提醒哦～">
+                                           </fieldset>
+                                           <textarea class="comment-content" name="comment"
+                                                     placeholder="想对作者说点什么。。。"></textarea>
+                                           <div class="comment-div">
+                                               <span id="tip_comment">支持markdown格式</span>
+                                               <button class="pure-button" type="submit" href="#">发表评论</button>
+                                               <a class="back" href='javascript:void(0);' onclick="hidden_replyform(this)" >返回</a>
+                                           </div>
+                                       </form>
+
+                                   </h>
+                                   {% for reply in comment.replies %}
+                                       <h class="comment-li reply-comment" onmouseover="show_reply(this)"
+                                           onmouseleave="hidden_replay(this)">
+                                           <i class="fa fa-user-circle"></i>
+                                           <span>{{ reply.name }}回复{{ reply.reply_name }}: </span>
+                                           <blockquote>
+                                            <span>{{ reply.reply_name }}:</span>
+                                               <h>{{ comment.text | safe}}</h>
+                                           </blockquote>
+                                           <a class="reply" href='javascript:void(0);' onclick="show_replyform(this)">回复</a>
+                                           <div class="comment-info">{{ reply.text | safe }}</div>
+
+                                           <form class="pure-form reply-form" method="post"
+                                                 action="{% url 'Comment:comment' blog_id=blog.id %}" style=" display: none">
+                                               <input hidden name="reply_to" value="{{ reply.id }}">
+                                               <input hidden name="reply_name" value="{{ reply.name }}">
+                                               <input hidden name="root_to" value="{{ comment.id }}">
+                                               <input hidden name="reply_email" value="{{ reply.email }}">
+                                               <fieldset class="pure-group">
+                                                   昵称：<input class="pure-input-1-4" name="comment-name" type="text"
+                                                             placeholder="昵称">
+                                                   &nbsp;&nbsp;
+                                                   邮箱：<input class="pure-input-1-3" name="comment-email" type="email"
+                                                             placeholder="留下邮箱，可以收到回复提醒哦～">
+                                               </fieldset>
+                                               <textarea class="comment-content" name="comment"
+                                                         placeholder="想对作者说点什么。。。"></textarea>
+                                               <div class="comment-div">
+                                                   <span id="tip_comment">支持markdown格式</span>
+                                                   <button class="pure-button" type="submit" href="#">发表评论</button>
+                                                   <a class="back" href='javascript:void(0);' onclick="hidden_replyform(this)" >返回</a>
+                                               </div>
+                                           </form>
+
+                                       </h>
+                                   {% endfor %}
+                               </ul>
+                            {% endfor %}
+                        </div>
+                        -->
+
+                        <a  class="btn btn-secondary" href='javascript:void(0);' onclick="show_replyform(this)">Comments</a>
+                        <div class="comment-box">
+                                <form class="comment-submit" method="post" action="{% url 'Comment:comment' blog_id=blog.id %}"  style="display: none">
+                                    <fieldset>
+                                        <legend>Please enter your comments</legend>
+                                        <div class="form-group">
+                                            <label for="exampleInputName">Your name</label>
+                                            <input class="form-control" name="comment-name" type="text" >
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail">Email address</label>
+                                            <input type="email" class="form-control" name="comment-email" >
+                                            <small id="emailHelp" class="form-text text-muted"> 留下邮箱可以收到回复提醒 We'll never share your email with anyone else</small>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputMessage">Message</label>
+                                            <textarea class="form-control" name="comment" rows="2"></textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <a href='javascript:void(0);' class="btn btn-dark" onclick="hidden_replyform(this)" >返回</a>
+                                    </fieldset>
+                                </form>
+                        </div>
+
+                        <!--
+
+                        <div class="comment-list-box">
+                            <h2>评论</h2>
+                            {% for comment in blog.comment_set.all %}
+                            {% endfor %}
+                            {% for comment in comment_list %}
+                               <ul class="comment-list ">
+                                   <h class="comment-li first-comment" onmouseover="show_reply(this)"
+                                       onmouseleave="hidden_replay(this)">
+                                       <i class="fa fa-user-circle"></i>
+                                       <span>{{ comment.name }}：</span>
+                                       <a class="reply" href='javascript:void(0);' onclick="show_replyform(this)" >回复</a>
+                                       <div class="comment-info">{{ comment.text | safe }}</div>
+
+                                       <form class="pure-form reply-form" id="reply-form" method="post"
+                                             action="zhe{li% url 'Comment:comment' blog_id=blog.id %}" style=" display: none">
+                                           <input hidden name="reply_to" value="{{ comment.id }}">
+                                           <input hidden name="reply_name" value="{{ comment.name }}">
+                                           <input hidden name="root_to" value="{{ comment.id }}">
+                                           <input hidden name="reply_email" value="{{ comment.email }}">
+                                           <fieldset class="pure-group">
+                                               昵称：<input class="pure-input-1-4" name="comment-name" type="text" placeholder="昵称">
+                                               &nbsp;&nbsp;
+                                               邮箱：<input class="pure-input-1-3" name="comment-email" type="email"
+                                                         placeholder="留下邮箱，可以收到回复提醒哦～">
+                                           </fieldset>
+                                           <textarea class="comment-content" name="comment"
+                                                     placeholder="想对作者说点什么。。。"></textarea>
+                                           <div class="comment-div">
+                                               <span id="tip_comment">支持markdown格式</span>
+                                               <button class="pure-button" type="submit" href="#">发表评论</button>
+                                               <a class="back" href='javascript:void(0);' onclick="hidden_replyform(this)" >返回</a>
+                                           </div>
+                                       </form>
+
+                                   </h>
+                                   {% for reply in comment.replies %}
+                                       <h class="comment-li reply-comment" onmouseover="show_reply(this)"
+                                           onmouseleave="hidden_replay(this)">
+                                           <i class="fa fa-user-circle"></i>
+                                           <span>{{ reply.name }}回复{{ reply.reply_name }}: </span>
+                                           <blockquote>
+                                            <span>{{ reply.reply_name }}:</span>
+                                               <h>{{ comment.text | safe}}</h>
+                                           </blockquote>
+                                           <a class="reply" href='javascript:void(0);' onclick="show_replyform(this)">回复</a>
+                                           <div class="comment-info">{{ reply.text | safe }}</div>
+
+                                           <form class="pure-form reply-form" method="post"
+                                                 action="{% url 'Comment:comment' blog_id=blog.id %}" style=" display: none">
+                                               <input hidden name="reply_to" value="{{ reply.id }}">
+                                               <input hidden name="reply_name" value="{{ reply.name }}">
+                                               <input hidden name="root_to" value="{{ comment.id }}">
+                                               <input hidden name="reply_email" value="{{ reply.email }}">
+                                               <fieldset class="pure-group">
+                                                   昵称：<input class="pure-input-1-4" name="comment-name" type="text"
+                                                             placeholder="昵称">
+                                                   &nbsp;&nbsp;
+                                                   邮箱：<input class="pure-input-1-3" name="comment-email" type="email"
+                                                             placeholder="留下邮箱，可以收到回复提醒哦～">
+                                               </fieldset>
+                                               <textarea class="comment-content" name="comment"
+                                                         placeholder="想对作者说点什么。。。"></textarea>
+                                               <div class="comment-div">
+                                                   <span id="tip_comment">支持markdown格式</span>
+                                                   <button class="pure-button" type="submit" href="#">发表评论</button>
+                                                   <a class="back" href='javascript:void(0);' onclick="hidden_replyform(this)" >返回</a>
+                                               </div>
+                                           </form>
+
+                                       </h>
+                                   {% endfor %}
+                               </ul>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    -->
+
+                    </article>
+
+
+
+
+                    <!--模板文章格式
+                    <article>
+
+                        <h2 class="article-title">Buy unbranded</h2>
+                        <p class="article-meta">Posted on <time datetime="2017-05-14">14 May</time> by <a href="#" rel="author">Joe Bloggs</a></p>
+
+                        <p>Purchasing a template license for 8.00 GBP (at time of writing around 10 USD) gives you the right to remove any branding including links, logos and source tags relating to ZyPOP. As well as waiving the attribution requirement, your payment will also help us provide continued support for users as well as creating new web templates. Find out more about how to buy at the licensing page on our website which can be accessed at <a href="#licensing" title="template license">#licensing</a></p>
+
+                        <h3>Lorem lipsum</h3>
+
+                        <p>Morbi fermentum condimentum felis, commodo vestibulum sem mattis sed. Aliquam magna ante, mollis vitae tincidunt in, malesuada vitae turpis. Sed aliquam libero ut velit bibendum consectetur. Quisque sagittis, est in laoreet semper, enim dui consequat felis, faucibus ornare urna velit nec leo. Maecenas condimentum velit vitae est lobortis fermentum. In tristique sem vitae metus ornare luctus tempus nisl volutpat. Integer et est id nisi tempus pharetra sagittis et libero.</p>
+
+                        <a href="#" class="btn btn-primary">Read more</a>
+                        <a href="#" class="btn btn-secondary">Comments</a>
+                    </article>
+                    -->
+
+                    <!-- Example pagination Bootstrap component -->
+                    <!--模板分页
+                    <nav>
+                        <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                        </ul>
+                    </nav>
+                    -->
+
+                    <!--分页
+                    <nav>
+                        <ul class="pagination">
+                            {% if blog_list.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ blog_list.previous_page_number }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+
+                                <li class="page-item"><a class="page-link" href="?page={{ blog_list.previous_page_number }}">{{ blog_list.previous_page_number }}</a></li>
+                            {% endif %}
+                                <li class="page-item active"><a class="page-link" href="?page={{ blog_list.number }}">{{ blog_list.number }}</a></li>
+                            {% if blog_list.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ blog_list.next_page_number }}">{{ blog_list.next_page_number }}</a></li>
+
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ blog_list.next_page_number }}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                     -->
+
+                </div>
+
+            </div> 
+        </main>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-lists">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <ul>
+                                <li><h4>Proin accumsan</h4></li>
+                                <li><a href="#">Rutrum nulla a ultrices</a></li>
+                                <li><a href="#">Blandit elementum</a></li>
+                                <li><a href="#">Proin placerat accumsan</a></li>
+                                <li><a href="#">Morbi hendrerit libero </a></li>
+                                <li><a href="#">Curabitur sit amet tellus</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm">
+                            <ul>
+                                <li><h4>Condimentum</h4></li>
+                                <li><a href="#">Curabitur sit amet tellus</a></li>
+                                <li><a href="#">Morbi hendrerit libero </a></li>
+                                <li><a href="#">Proin placerat accumsan</a></li>
+                                <li><a href="#">Rutrum nulla a ultrices</a></li>
+                                <li><a href="#">Cras dictum</a></li>
+                            </ul>
+                        </div>   
+                        <div class="col-sm">
+                            <ul>
+                                <li><h4>Suspendisse</h4></li>
+                                <li><a href="#">Morbi hendrerit libero </a></li>
+                                <li><a href="#">Proin placerat accumsan</a></li>
+                                <li><a href="#">Rutrum nulla a ultrices</a></li>
+                                <li><a href="#">Curabitur sit amet tellus</a></li>
+                                <li><a href="#">Donec in ligula nisl.</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm">
+                            <h4>Suspendisse</h4>
+                            <p>Integer mattis blandit turpis, quis rutrum est. Maecenas quis arcu vel felis lobortis iaculis fringilla at ligula. Nunc dignissim porttitor dolor eget porta.</p>
+
+                            <p class="social-icons">
+                                <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-youtube fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="footer-bottom">
+                    <p class="text-center">Free Bootstrap Template by <a href="#">ZyPop</a>.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+</p>
+                    <p class="text-center"><a href="#">Back to top</a></p>
+            </div>
+            
+        </footer>
+
+
+
+        <!-- Bootcamp JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <script src="{% static 'Blog/js/detail-js.js' %}"></script>
+    </body>
+</html>

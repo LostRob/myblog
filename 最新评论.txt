@@ -1,0 +1,6 @@
+{% get_latest_comment as comment_list %}
+{% for comment in comment_list %}
+<li><a href="#" title="Website Templates">{{ comment.blog.title }}</a><br/>
+       {{ comment.text }}
+</li>
+{% endfor %}

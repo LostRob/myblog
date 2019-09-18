@@ -1,0 +1,38 @@
+{% extends 'detail_base.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block article %}
+    <div class="comment-box">
+        <form class="comment-submit" method="post" action="{% url 'Blog' blog_id=blog.id %}"  style="display: none">
+            <fieldset>
+                <legend>Please enter your comments</legend>
+                <div class="form-group">
+                    <label for="exampleInputName">Your name</label>
+                    <input class="form-control" name="comment-name" type="text" >
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail">Email address</label>
+                    <input type="email" class="form-control" name="comment-email" >
+                    <small id="emailHelp" class="form-text text-muted"> 留下邮箱可以收到回复提醒 We'll never share your email with anyone else</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputMessage">Message</label>
+                    <textarea class="form-control" name="comment" rows="2"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href='javascript:void(0);' class="btn btn-dark" onclick="hidden_replyform(this)" >返回</a>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}
+</body>
+</html>

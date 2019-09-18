@@ -1,0 +1,499 @@
+{% load static %}
+{% load simple_tags %}
+<!doctype html>
+<html lang="en">
+	<head>
+        <title>Home</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Main CSS --> 
+        <link rel="stylesheet" href="{% static 'Blog/css/style.css' %}">
+        <!-- Font Awesome -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'Blog/css/normalize.css' %}">
+
+        <link rel="stylesheet" href="{% static 'Blog/css/style.css' %}" media="screen" type="text/css" />
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="header-wrap d-none d-md-block">
+            <div class="container">
+                <div class="row">
+                    
+                    <!-- Left header box -->
+                    <header class="col-6 text-left">
+                        <h1>MySpace</h1>
+                    </header>
+                    
+                    <!-- Right header box -->
+                    <div class="col-6 text-right">               
+                        <p class="header-social-icons social-icons">
+                            <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-youtube fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Main navigation -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+            <div class="container">
+                
+                <!-- Company name shown on mobile -->
+                <a class="navbar-brand d-md-none d-lg-none d-xl-none" href="#">MySpace</a>
+
+                <!-- Mobile menu toggle -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Main navigation items -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'Blog:index2' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">文章类型 / Categories</a>
+                                    <div class="dropdown-menu navbar-dark bg-primary">
+                                        {% get_categories as category_list %}{% for category in category_list %}<a class='dropdown-item'href="{% url 'Blog:category' category.pk %}">{{ category.name }}</a>{% endfor %}
+                                    </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">标签 / Tags</a>
+                                    <div class="dropdown-menu navbar-dark bg-primary">
+                                        {% get_tags as tag_list %}{% for tag in tag_list %}<a class='dropdown-item'href="{% url 'Blog:tag' tag.pk %}">{{ tag.name }}</a>{% endfor %}
+                                    </div>
+                        </li>
+
+                        <!--
+                        <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Examples &amp; Pages</a>
+                                    <div class="dropdown-menu navbar-dark bg-primary">
+                                          <a class="dropdown-item" href="examples.html">Style Examples</a>
+                                          <a class="dropdown-item" href="three-column.html">Three Column</a>
+                                          <a class="dropdown-item" href="one-column.html">One column / no sidebar</a>
+                                          <a class="dropdown-item"  href="text.html">Text / left sidebar</a>
+                                    </div>
+                        </li>
+                        -->
+
+
+                        <li class="nav-item">
+                                <a class="nav-link" href="#">Services</a>
+                        </li>
+
+                        <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                        </li>
+                        <!--
+                        <li class="nav-item">
+                                <a class="nav-link" href="#">Products</a>
+                        </li>
+                        -->
+
+
+                    </ul>
+                    <form class="form-inline header-search-form my-2 my-lg-0" action="{% url 'haystack_search' %}">
+                        <input class="form-control mr-sm-2" type="text" name="q" size="25"  placeholder="Search" aria-label="Search">
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>                
+            </div>
+        </nav>
+
+
+        <!-- Jumbtron / Slider -->
+        <div class="jumbotron-wrap">
+            <div class="container">
+                <div id="mainCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+
+                        {% for blog in blog_list %}
+                        <div class="carousel-item">
+                            <div class="jumbotron">
+                                <h1 class="text-center">{{ blog.title }}</h1>
+                                <p class="lead text-center">{{ blog.excerpt }}</p>
+                                <p class="lead text-center">
+                                    <a class="btn btn-outline-primary btn-lg" href="{% url 'Blog:detail' blog.id %}" role="button">Learn more</a>
+                                    <!-- <a class="btn btn-outline-secondary btn-lg" href="#" role="button"><i class="fa fa-gbp"></i> &nbsp; Buy now</a> -->
+                                </p>
+                            </div>
+
+                        </div>
+                        {% endfor %}
+
+                        <!-- 原slider-->
+                        <div class="carousel-item active">
+                            <div class="jumbotron">
+                                <h1 class="text-center">你好 </h1>
+                                <p class="lead text-center">hello</p>
+                                <p class="lead text-center">
+                                </p>
+                            </div>
+
+                        </div>
+                        <!--
+                        <div class="carousel-item">
+                            <div class="jumbotron">
+                                <h1 class="text-center">Cras sit amet nibh libero, in gravida nulla</h1>
+                                <p class="lead text-center">Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                                <p class="lead text-center">
+                                    <a class="btn btn-outline-primary btn-lg" href="#" role="button"><i class="fa fa-info"></i> &nbsp; Learn more</a>
+                                    <a class="btn btn-outline-secondary btn-lg" href="#" role="button"><i class="fa fa-gbp"></i> &nbsp; Buy now</a>
+                                </p>
+                            </div>
+
+                        </div>
+                        -->
+
+                    </div>
+
+                    <a class="carousel-control-prev" href="#mainCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#mainCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content area -->
+        <main class="container">
+            <div class="row">
+                
+                <!-- Main content -->
+                <div class="col-sm-8">
+
+                    <!-- 排序方式 -->
+                    <ul class="nav nav-tabs">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">顺序</a>
+                      </li>
+                        <li class="nav-item">
+                        <a class="{% if order == 'normal' %} nav-link active{% else %}nav-link{% endif %}"  href="?order=normal">默认</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="{% if order == 'views' %} nav-link active{% else %}nav-link{% endif %}"  href="?order=views">热度</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="{% if order == 'modified_time' %} nav-link active{% else %}nav-link{% endif %}"  href="?order=modified_time">时间</a>
+                      </li>
+                    </ul>
+                    <p>&nbsp;</p>
+
+                    <!-- 原tabs及排序
+                    <h3>Tabs</h3>
+                        <ul class="nav nav-tabs">
+                          <li class="nav-item">
+                            <a class="nav-link active" href="#">Active</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                          </li>
+                        </ul>
+
+                    <ul>
+                        <li class="{% if order == '' %}active{% endif %}"> <a href="?order="></a></li>
+                        <li class="{% if order == 'views' %}active{% endif %}"> <a href="?order=views">浏览量</a></li>
+                        <li class="{% if order == 'modified_time' %}active{% endif %}"> <a href="?order=modified_time">修改时间</a></li>
+                    </ul>
+                    -->
+
+                    {% block article %}
+                    {% for blog in blog_list%}
+                    <article>
+                        <div class = 'article'>
+                        <h2 class="article-title"> {{ blog.title }}</h2>
+                        <div class = 'clr'></div>
+                        <!--
+                        <p class="article-meta">Posted on <strong %="the Month & & the Day">{{ blog.created_time }}</strong>by <strong rel="author">Robert</strong></p>
+                        -->
+                        <p class="article-meta">Posted by <strong href="#" rel="author">Robert</strong> · Filed under <strong>{{ blog.category.name }}</strong></p>
+                        <div class = 'clr'></div>
+                        <p>{{ blog.excerpt }}</p>
+
+                        <p>Tagged:
+                            {%  for tag in blog.tags.all  %}
+                                <span  class="badge badge-light" href="#">{{ tag.name }}</span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                        <span class="article-meta"> {{ blog.modified_time }} </span>
+                        <span>|</span>
+                        <span class="article-meta">Responses  <strong>{{ blog.comment_set.count }}</strong></span>
+                        <span>|</span>
+                        <span class="article-meta">read <strong>{{ blog.views }}</strong></span>
+                        </p>
+                        </div>
+                        <!--
+                        <ul>
+                            <li>Firefox</li>
+                            <li>IE / Edge</li>
+                            <li>Chrome</li>
+                            <li>Safari</li>
+                            <li>iOS / Android</li>
+                        </ul>
+                        -->
+                        <a href="{% url 'Blog:detail' blog.id %}" class="btn btn-primary">Read more</a>
+                        <a href="{% url 'Blog:detail' blog.id %}" class="btn btn-secondary">Comments</a>
+                    </article>
+                    {% endfor %}
+                    {% endblock %}
+
+
+                    <!--HTML原文章格式
+                    <article>
+
+                        <h2 class="article-title">Buy unbranded</h2>
+                        <p class="article-meta">Posted on <time datetime="2013-05-14">14 May</time> by <a href="#" rel="author">Joe Bloggs</a></p>
+
+                        <p>Purchasing a template license for 8.00 GBP (at time of writing around 12 USD) gives you the right to remove any branding including links, logos and source tags relating to ZyPOP. As well as waiving the attribution requirement, your payment will also help us provide continued support for users as well as creating new web templates. Find out more about how to buy at the licensing page on our website which can be accessed at <a href="#licensing" title="template license">#licensing</a></p>
+
+                        <h3>Lorem lipsum</h3>
+
+                        <p>Morbi fermentum condimentum felis, commodo vestibulum sem mattis sed. Aliquam magna ante, mollis vitae tincidunt in, malesuada vitae turpis. Sed aliquam libero ut velit bibendum consectetur. Quisque sagittis, est in laoreet semper, enim dui consequat felis, faucibus ornare urna velit nec leo. Maecenas condimentum velit vitae est lobortis fermentum. In tristique sem vitae metus ornare luctus tempus nisl volutpat. Integer et est id nisi tempus pharetra sagittis et libero.</p>
+
+                        <a href="#" class="btn btn-primary">Read more</a>
+                        <a href="#" class="btn btn-secondary">Comments</a>
+                    </article>
+                    -->
+
+                    <!-- Example pagination Bootstrap component -->
+                    <!--HTML原paginator分页器
+                    <div class="article" style="padding:5px 20px 2px 20px; background:none; border: 0;">
+                            <p>Page {{ page }} of {{ blog_list.paginator.num_pages }}
+                                <span class="buttons">
+                                    {% if blog_list.has_previous %}
+                                        <a href="?page={{ blog_list.previous_page_number }}">上一页</a>
+                                    {% endif %}
+                                    {% if blog_list.has_next %}
+                                        <a href="?page={{ blog_list.next_page_number }}">下一页</a>
+                                    {% endif %}
+                                </span>
+                            </p>
+                    </div>
+                    -->
+                    {% block page %}
+                    <!-- Example pagination Bootstrap component -->
+                    <nav>
+                        <ul class="pagination">
+                            {% if blog_list.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ blog_list.previous_page_number }}&order={{ order }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+
+                                <li class="page-item"><a class="page-link" href="?page={{ blog_list.previous_page_number }}&order={{ order }}">{{ blog_list.previous_page_number }}</a></li>
+                            {% endif %}
+                                <li class="page-item active"><a class="page-link" href="?page={{ blog_list.number }}&order={{ order }}">{{ blog_list.number }}</a></li>
+                            {% if blog_list.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ blog_list.next_page_number }}&order={{ order }}">{{ blog_list.next_page_number }}</a></li>
+
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ blog_list.next_page_number }}&order={{ order }}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endblock %}
+                </div>
+                <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+
+                <!-- Sidebar -->
+                <aside class="col-sm-4">
+
+
+
+                    <div class="sidebar-box">
+                        <h4>目录 / Categories</h4>
+                        <div class="list-group list-group-root">
+                            <a class="list-group-item active" href="{% url 'Blog:index2' %}">主页 / Home</a>
+                            <!--<a class="list-group-item" href="blogging.html">发布博客 / Post Blogs</a>-->
+
+                            <a class="list-group-item" href="examples.html">文章类型 / Categories</a>
+                            <div class='list-group'>
+                                {% get_categories as category_list %}{% for category in category_list %}<a class='list-group-item'href="{% url 'Blog:category' category.pk %}">{{ category.name }}</a>{% endfor %}
+                            <!--
+                            {% get_categories as category_list %}
+                            {% for category in category_list %}
+                            <li>
+                                <a href="{% url 'Blog:category' category.pk %}">
+                                    {{ category.name }} <span class="post-count">(13)</span>
+                                </a>
+                            </li>
+                            {% empty %}
+                            暂无分类！
+                            {% endfor %}
+                            -->
+                            </div>
+
+                            <a class="list-group-item" href="examples.html">标签 / Tags</a>
+                            <div class='list-group'>
+                                    {% get_tags as tag_list %}{% for tag in tag_list %}<a class='list-group-item'href="{% url 'Blog:tag' tag.pk %}">{{ tag.name }}</a>{% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- block -->
+                    <div class="container" style="text-align:left">
+                      <div class="watch-section">
+                        <div class="watch-inner">
+                          <div class="faces">
+                                <div class="face face5">
+                                    <svg id="clock5" class="clock"></svg>
+                                </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div style="text-align:center;clear:both">
+                    <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+                    <script src="/follow.js" type="text/javascript"></script>
+                    </div>
+                    </div>
+
+                    <!-- 最新评论 -->
+                    <div class="sidebar-box sidebar-box-bg">
+                        <h4>Newest Comment</h4>
+                        {% get_latest_comment as comment_list %}
+                        {% for comment in comment_list %}
+                        <li><a title="Website Templates">{{ comment.blog.title }}</a><br/>
+                            {{ comment.text }}
+                        </li>
+                        <a style="text-align: right;" href="{% url 'Blog:detail' comment.blog.id %}" class="readmore">Read More &raquo;</a>
+                        {% endfor %}
+                        <!--
+                        <p>Aenean nec massa a tortor auctor sodales sed a dolor. Duis vitae lorem sem. Proin at velit vel arcu pretium luctus. <a href="#" class="readmore">Read More &raquo;</a></p>
+                        -->
+                    </div>
+
+                    <div class="sidebar-box">
+                        <h4>Search site</h4>
+                        <form class="form-inline my-2 my-lg-0" action="{% url 'haystack_search' %}">
+                            <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                            <button class="btn my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+
+                    <!-- search 原型
+                    <form class="input-group" action="{% url 'haystack_search' %}">
+                        <input class="form-control" type="search" name="q" placeholder="search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Go!</button>
+                        </span>
+                    </form>
+                    -->
+
+                    <div class="sidebar-box">
+                        <h4>Helpful Links</h4>
+                        <ul>
+                            <li><a href="http://github.com" title="premium templates">Github</a></li>
+                            <li><a href="http://csdn.net" title="web hosting">CSDN</a></li>
+                        </ul>
+                    </div>
+                </aside> 
+                
+                
+            </div> 
+        </main>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-lists">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <ul>
+                                <li><h4>Proin accumsan</h4></li>
+                                <li><a href="#">Rutrum nulla a ultrices</a></li>
+                                <li><a href="#">Blandit elementum</a></li>
+                                <li><a href="#">Proin placerat accumsan</a></li>
+                                <li><a href="#">Morbi hendrerit libero </a></li>
+                                <li><a href="#">Curabitur sit amet tellus</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm">
+                            <ul>
+                                <li><h4>Condimentum</h4></li>
+                                <li><a href="#">Curabitur sit amet tellus</a></li>
+                                <li><a href="#">Morbi hendrerit libero </a></li>
+                                <li><a href="#">Proin placerat accumsan</a></li>
+                                <li><a href="#">Rutrum nulla a ultrices</a></li>
+                                <li><a href="#">Cras dictum</a></li>
+                            </ul>
+                        </div>   
+                        <div class="col-sm">
+                            <ul>
+                                <li><h4>Suspendisse</h4></li>
+                                <li><a href="#">Morbi hendrerit libero </a></li>
+                                <li><a href="#">Proin placerat accumsan</a></li>
+                                <li><a href="#">Rutrum nulla a ultrices</a></li>
+                                <li><a href="#">Curabitur sit amet tellus</a></li>
+                                <li><a href="#">Donec in ligula nisl.</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm">
+                            <h4>Suspendisse</h4>
+                            <p>Integer mattis blandit turpis, quis rutrum est. Maecenas quis arcu vel felis lobortis iaculis fringilla at ligula. Nunc dignissim porttitor dolor eget porta.</p>
+
+                            <p class="social-icons">
+                                <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-youtube fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="footer-bottom">
+                <p class="text-center">本网站由<a href="#">Robert</a>制作.微信：LostRobert</p>
+                <!--
+                Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+                </p>
+                -->
+                <p class="text-center"><a href="#">Back to top</a></p>
+            </div>
+            
+        </footer>
+
+
+
+        <!-- Bootcamp JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <script src='{% static 'Blog/js/jquery.js' %}'></script>
+        <script src='{% static 'Blog/js/snap.svg-min.js' %}'></script>
+        <script src='{% static 'Blog/js/index.js' %}'></script>
+
+        <style>
+            span.highlighted{color:red;}
+        </style>
+
+    </body>
+</html>

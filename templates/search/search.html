@@ -1,0 +1,46 @@
+{% extends 'index2.html' %}
+<!DOCTYPE html>
+{% load static %}
+{% load highlight %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block article %}
+    <title>Title</title>
+    {% if query %}
+    {% for result in page.object_list %}
+        <article id="post-77"
+                 class="clearfix post post-77 blog type-blog status-publish has-post-thumbnail hentry">
+            <h2 class="entry-title">
+                <a href="{% url 'Blog:detail' result.object.id %}" rel="bookmark">
+                    {% highlight result.object.title with query %}
+                </a>
+            </h2>
+            <div class="entry-meta"><i class="glyphicon glyphicon-time"></i>
+                <time class="meta-date" itemprop="datePublished"
+                      datetime="{{ result.object.modified_time }}"> {{ result.object.modified_time }}</time>
+                <i class="glyphicon glyphicon-tags"></i>&nbsp;
+                <span class="post-cate">{{ result.object.category.name }}</span>
+            </div>
+            <div class="entry-content">
+                <p>{% highlight result.object.body with query %}&hellip;</p>
+            </div>
+            <div class="etry-more">
+                <a href="{% url 'Blog:detail' result.object.id %}" rel="bookmark">Read More</a>
+            </div>
+        </article>
+    {% empty %}
+        <div class="no-post">没有搜索到你想要的结果！</div>
+    {% endfor %}
+    {% endif %}
+    {% endblock %}
+    {% block page %}
+    {% endblock %}
+
+
+
+</head>
+<body>
+
+</body>
+</html>
