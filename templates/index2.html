@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
-        <title>Home</title>
+        <title>My Space</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Main CSS --> 
@@ -318,12 +318,13 @@
                     </nav>
                     {% endblock %}
                 </div>
-                <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
 
                 <!-- Sidebar -->
                 <aside class="col-sm-4">
 
 
+                    {% block side %}
+                    
 
                     <div class="sidebar-box">
                         <h4>目录 / Categories</h4>
@@ -331,7 +332,7 @@
                             <a class="list-group-item active" href="{% url 'Blog:index2' %}">主页 / Home</a>
                             <!--<a class="list-group-item" href="blogging.html">发布博客 / Post Blogs</a>-->
 
-                            <a class="list-group-item" href="examples.html">文章类型 / Categories</a>
+                            <a class="list-group-item" href="{% url 'Blog:index2' %}">文章类型 / Categories</a>
                             <div class='list-group'>
                                 {% get_categories as category_list %}{% for category in category_list %}<a class='list-group-item'href="{% url 'Blog:category' category.pk %}">{{ category.name }}</a>{% endfor %}
                             <!--
@@ -348,12 +349,13 @@
                             -->
                             </div>
 
-                            <a class="list-group-item" href="examples.html">标签 / Tags</a>
+                            <a class="list-group-item" href="{% url 'Blog:index2' %}">标签 / Tags</a>
                             <div class='list-group'>
                                     {% get_tags as tag_list %}{% for tag in tag_list %}<a class='list-group-item'href="{% url 'Blog:tag' tag.pk %}">{{ tag.name }}</a>{% endfor %}
                             </div>
                         </div>
                     </div>
+                    {% endblock %}
 
                     <!-- block -->
                     <div class="container" style="text-align:left">

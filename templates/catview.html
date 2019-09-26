@@ -1,12 +1,15 @@
-{% extends 'index2.html' %}
 <!DOCTYPE html>
+{% extends 'index2.html' %}
+{% load simple_tags %}
 {% load static %}
 {% load highlight %}
 <html lang="en">
 <head>
+    <title>My Space</title>
     <meta charset="UTF-8">
+</head>
+<body>
     {% block article %}
-    <title>Title</title>
     {% for blog in blog_list%}
     <article>
         <div class = 'article'>
@@ -50,10 +53,39 @@
     {% block page %}
     {% endblock %}
 
+    {% block side %}
 
 
-</head>
-<body>
+    <div class="sidebar-box">
+        <h4>目录 / Categories</h4>
+        <div class="list-group list-group-root">
+            <a class="list-group-item" href="{% url 'Blog:index2' %}">主页 / Home</a>
+            <!--<a class="list-group-item" href="blogging.html">发布博客 / Post Blogs</a>-->
+
+            <a class="list-group-item active" href="{% url 'Blog:index2' %}">文章类型 / Categories</a>
+            <div class='list-group'>
+                {% get_categories as category_list %}{% for category in category_list %}<a class='list-group-item'href="{% url 'Blog:category' category.pk %}">{{ category.name }}</a>{% endfor %}
+            <!--
+            {% get_categories as category_list %}
+            {% for category in category_list %}
+            <li>
+                <a href="{% url 'Blog:category' category.pk %}">
+                    {{ category.name }} <span class="post-count">(13)</span>
+                </a>
+            </li>
+            {% empty %}
+            暂无分类！
+            {% endfor %}
+            -->
+            </div>
+
+            <a class="list-group-item" href="examples.html">标签 / Tags</a>
+            <div class='list-group'>
+                    {% get_tags as tag_list %}{% for tag in tag_list %}<a class='list-group-item'href="{% url 'Blog:tag' tag.pk %}">{{ tag.name }}</a>{% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
 
 </body>
 </html>
