@@ -183,10 +183,10 @@
                         <a class="{% if order == 'normal' %} nav-link active{% else %}nav-link{% endif %}"  href="?order=normal">默认</a>
                       </li>
                       <li class="nav-item">
-                        <a class="{% if order == 'views' %} nav-link active{% else %}nav-link{% endif %}"  href="?order=views">热度</a>
+                        <a class="{% if order == 'views' %} nav-link active{% else %}nav-link{% endif %}"  href="?order=views">最热</a>
                       </li>
                       <li class="nav-item">
-                        <a class="{% if order == 'modified_time' %} nav-link active{% else %}nav-link{% endif %}"  href="?order=modified_time">时间</a>
+                        <a class="{% if order == 'created_time' %} nav-link active{% else %}nav-link{% endif %}"  href="?order=created_time">最新</a>
                       </li>
                     </ul>
                     <p>&nbsp;</p>
@@ -234,7 +234,7 @@
                             {% endfor %}
                         </p>
                         <p>
-                        <span class="article-meta"> {{ blog.modified_time }} </span>
+                        <span class="article-meta"> {{ blog.created_time }} </span>
                         <span>|</span>
                         <span class="article-meta">Responses  <strong>{{ blog.comment_set.count }}</strong></span>
                         <span>|</span>
@@ -380,7 +380,7 @@
                         {% get_latest_comment as comment_list %}
                         {% for comment in comment_list %}
                         <li><a title="Website Templates">{{ comment.blog.title }}</a><br/>
-                            {{ comment.text }}
+                            {{ comment.text|safe|truncatechars:150  }}
                         </li>
                         <a style="text-align: right;" href="{% url 'Blog:detail' comment.blog.id %}" class="readmore">Read More &raquo;</a>
                         {% endfor %}
@@ -473,6 +473,7 @@
             
             <div class="footer-bottom">
                 <p class="text-center">本网站由<a href="#">Robert</a>制作.微信：LostRobert</p>
+                <p class="text-center"><a href="http://www.beian.miit.gov.cn">晋ICP备19011473号</a></p>
                 <!--
                 Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
                 </p>

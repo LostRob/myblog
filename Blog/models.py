@@ -26,6 +26,7 @@ class Blog(models.Model):
     category = models.ForeignKey(Category, on_delete=True,blank=True)  # ForeignKey表示1对多（多个post对应1个category）
     tags = models.ManyToManyField(Tag, blank=True)
     views = models.PositiveIntegerField(default=0)  # 阅读量
+    # orderalg = models.PositiveIntegerField(default=0)  # 加权分数
     def __str__(self):
         return self.title
 

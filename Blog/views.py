@@ -15,7 +15,7 @@ def index2(request):
     :return:
     """
     blog = Blog.objects.all()
-
+    # orderalg = blog.order_by()
     order = request.GET.get('order','')
 
     # 排序方式有一些混乱
@@ -25,15 +25,16 @@ def index2(request):
         blog = blog.order_by('-views')
         order = 'views'
     # 按照修改时间最新
-    elif order == 'modified_time':
-        blog = blog.order_by('-modified_time')
-        order = 'modified_time'
-    # 按照随机排序
+    elif order == 'created_time':
+        blog = blog.order_by('-created_time')
+        order = 'created_time'
+    # 按照算法排序
     else:
+        # orderalg
         blog = blog.order_by('?')
         order = 'normal'
 
-    limit = 5
+    limit = 6
     paginator = Paginator(blog, limit)
     page = request.GET.get('page')
     '''
