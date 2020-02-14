@@ -49,8 +49,9 @@ INSTALLED_APPS = [
 
     'Blog',
     'Comment',
-    'haystack'
-    # 'login',
+    'haystack',
+    'login',
+    'captcha',
 ]
 
 MIDDLEWARE = [

@@ -27,6 +27,7 @@ class Blog(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)
     views = models.PositiveIntegerField(default=0)  # 阅读量
     # orderalg = models.PositiveIntegerField(default=0)  # 加权分数
+
     def __str__(self):
         return self.title
 

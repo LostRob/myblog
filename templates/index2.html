@@ -1,5 +1,6 @@
 {% load static %}
 {% load simple_tags %}
+{% load staticfiles %}
 <!doctype html>
 <html lang="en">
 	<head>
@@ -26,13 +27,44 @@
                     </header>
                     
                     <!-- Right header box -->
-                    <div class="col-6 text-right">               
-                        <p class="header-social-icons social-icons">
-                            <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
-                            <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
-                            <a href="#"><i class="fa fa-youtube fa-2x"></i></a>
-                            <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
-                        </p>
+                    <div class="col-6 text-right">
+
+                        {% if request.session.is_login %}
+                            <div>
+                            <h3>你好,{{ request.session.user_name }}！欢迎回来！<img src ='{% static 'Blog/images/userpic.gif' %}' width="60" height="60" alt="user" class="userpic"/></h3>
+                            <li><a href="/logout/">登出</a></li>
+                            </div>
+                        {% else %}
+                            <div>
+                            <h3>您尚未登录，只能访问公开内容！<a href="/login/"><img src ='{% static 'Blog/images/userpic.gif' %}' width="60" height="60" alt="user" class="userpic"/></a></h3>
+                            <li><a href="/login/">登录</a></li>
+                            <li><a href="/register/">注册</a></li>
+                            </div>
+
+                            <!--
+                            <div class="col-6 text-right">
+                            <ul class="navbar-nav mr-right">
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src ='{% static 'Blog/images/userpic.gif' %}' width="60" height="60" alt="user" class="userpic"/></a>
+                                    <div class="dropdown-menu navbar-dark bg-primary">
+                                          <a class="dropdown-item" href="examples.html">Style Examples</a>
+                                          <a class="dropdown-item" href="three-column.html">Three Column</a>
+                                          <a class="dropdown-item" href="/login/">登录</a>
+                                          <a class="dropdown-item"  href="/register/">注册</a>
+                                    </div>
+                            </li>
+
+                            <p class="header-social-icons social-icons">
+                                <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-youtube fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                            </p>
+                            </ul>
+                            </div>
+                            -->
+                        {% endif %}
+
                     </div>
                 </div>
             </div>
@@ -104,6 +136,8 @@
                         <input class="form-control mr-sm-2" type="text" name="q" size="25"  placeholder="Search" aria-label="Search">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                     </form>
+
+
                 </div>                
             </div>
         </nav>
@@ -117,7 +151,7 @@
 
                         {% for blog in blog_list %}
                         <div class="carousel-item">
-                            <div class="jumbotron">
+                            <div class="jumbotron jumbotron-narrow">
                                 <h1 class="text-center">{{ blog.title }}</h1>
                                 <p class="lead text-center">{{ blog.excerpt }}</p>
                                 <p class="lead text-center">
@@ -335,6 +369,11 @@
                             <a class="list-group-item active" href="{% url 'Blog:index2' %}">主页 / Home</a>
                             <!--<a class="list-group-item" href="blogging.html">发布博客 / Post Blogs</a>-->
 
+                            {% if request.session.is_login %}
+                            <a class="list-group-item" href="{% url 'Blog:blogging' %}">创作 / Write</a>
+                            {% else %}
+                                <a class="list-group-item" href="/login/">创作 / Write</a>
+                            {% endif %}
                             <a class="list-group-item" href="{% url 'Blog:index2' %}">文章类型 / Categories</a>
                             <div class='list-group'>
                                 {% get_categories as category_list %}{% for category in category_list %}<a class='list-group-item'href="{% url 'Blog:category' category.pk %}">{{ category.name }}</a>{% endfor %}
@@ -372,8 +411,6 @@
                         </div>
                       </div>
                       <div style="text-align:center;clear:both">
-                    <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-                    <script src="/follow.js" type="text/javascript"></script>
                     </div>
                     </div>
 
@@ -496,6 +533,10 @@
         <script src='{% static 'Blog/js/jquery.js' %}'></script>
         <script src='{% static 'Blog/js/snap.svg-min.js' %}'></script>
         <script src='{% static 'Blog/js/index.js' %}'></script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 
         <style>
             span.highlighted{color:red;}

@@ -1,7 +1,8 @@
 from django.conf.urls import url
-from  Blog import views
-from django.urls import path
+from  . import views
 from django.contrib import admin
+from django.urls import path,include,re_path
+from login import views as loginviews
 
 app_name = 'Blog'   # 这里是为了url反向解析用
 
@@ -14,9 +15,13 @@ urlpatterns = [
     url(r'text.html', views.text),
     url(r'three-column.html', views.threecolumn),
     url(r'^detail/detail-(?P<blog_id>\d+)/$',views.detail,name='detail'),
-    url(r'blogging.html',views.blogging),
+    url(r'^blogging',views.blogging,name='blogging'),
     # 分类
     url(r'^category/(?P<pk>[0-9]+)/$', views.category, name='category'),
     url(r'^tag/(?P<pk>[0-9]+)/$', views.tag, name='tag'),
     url(r'admin',admin.site.urls),
+    url(r'^login/', loginviews.login),
+    url(r'^register/', loginviews.register),
+    url(r'^logout/', loginviews.logout),
+    url(r'^captcha', include('captcha.urls'))
 ]
