@@ -1,10 +1,16 @@
-from django.shortcuts import render
+# 引入redirect重定向模块
+from django.shortcuts import render,redirect
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from Blog.models import Blog,Tag,Category
 from Comment.models import Comment
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
 from django.shortcuts import get_object_or_404
+# 引入HttpResponse
+from django.http import HttpResponse
+# 引入刚才定义的ArticlePostForm表单类
+from .forms import ArticlePostForm
+from login.models import User
 import markdown
 
 
@@ -69,8 +75,51 @@ def text(request):
 def threecolumn(request):
     return render(request=request, template_name='three-column.html')
 
+# def blogging(request):
+#     return render(request=request, template_name='blogging.html')
+
+# 写文章的视图
 def blogging(request):
-    return render(request=request, template_name='blogging.html')
+     # 判断用户是否登录
+    if not request.session.get('is_login', None):
+        return redirect('/index')
+    # 判断用户是否提交数据
+    if request.method == "POST":
+        # 将提交的数据赋值到表单实例中
+        article_post_form = ArticlePostForm(request.POST)
+        # 判断提交的数据是否满足模型的要求
+        if article_post_form.is_valid():
+            title = article_post_form.cleaned_data['title']
+            excerpt = article_post_form.cleaned_data['excerpt']
+            body = article_post_form.cleaned_data['body']
+            # tag = article_post_form.cleaned_data['tag']
+            # category = article_post_form.cleaned_data['category']
+            new_blog = Blog.objects.create(title=title,excerpt=excerpt,body=body)
+            # 保存数据，但暂时不提交到数据库中
+            # new_blog = article_post_form.save(commit=False)
+            # new_blog.title = title
+            # new_blog.excerpt = excerpt
+            # new_blog.body = body
+            # new_blog.tag = tag
+            # new_blog.category = category
+            # 指定数据库中 id=1 的用户为作者
+            # new_blog.author = User.objects.get(id=1)
+            # 将新文章保存到数据库中
+            # new_blog.save()
+            # 完成后返回到文章列表
+            # return redirect("Blog:detail")
+            return render(request, 'blogging.html', locals())
+        # 如果数据不合法，返回错误信息
+        else:
+            message = "两次输入的密码不同！"
+            return render(request, 'blogging.html',locals())
+    # 如果用户请求获取数据
+    # 创建表单类实例
+    article_post_form = ArticlePostForm()
+    # 返回模板
+    message = "两次输入的密码相同！"
+    return render(request, 'blogging.html', locals())
+
 
 # 分类视图
 def category(request,pk):
