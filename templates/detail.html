@@ -56,7 +56,6 @@
                 <!-- Company name shown on mobile -->
                 <a class="navbar-brand d-md-none d-lg-none d-xl-none" href="#">MySpace</a>
 
-
                 <!-- Mobile menu toggle -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -68,12 +67,6 @@
                         <li class="nav-item">
                                 <a class="nav-link" href="{% url 'Blog:index2' %}">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        {% if request.session.is_login %}
-                            <a class="list-group-item" href="{% url 'Blog:blogging' %}">创作 / Write</a>
-                            {% else %}
-                                <a class="list-group-item" href="/login/">创作 / Write</a>
-                            {% endif %}
-
 
                         <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">文章类型 / Categories</a>
@@ -88,26 +81,20 @@
                                         {% get_tags as tag_list %}{% for tag in tag_list %}<a class='dropdown-item'href="{% url 'Blog:tag' tag.pk %}">{{ tag.name }}</a>{% endfor %}
                                     </div>
                         </li>
-
-
-
                         <li class="nav-item">
                                 <a class="nav-link" href="#">Services</a>
-                        </li>
-
-                        <li class="nav-item">
-                                <a class="nav-link" href="#">Products</a>
                         </li>
 
                         <li class="nav-item">
                                 <a class="nav-link" href="#">Contact</a>
                         </li>
                     </ul>
-                    
                     <form class="form-inline header-search-form my-2 my-lg-0" action="{% url 'haystack_search' %}">
                         <input class="form-control mr-sm-2" type="text" name="q" size="25"  placeholder="Search" aria-label="Search">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                     </form>
+
+
                 </div>
             </div>
         </nav>

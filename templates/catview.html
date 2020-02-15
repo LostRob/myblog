@@ -9,9 +9,31 @@
     <meta charset="UTF-8">
 </head>
 <body>
+    {% block navitem %}
+        <li class="nav-item">
+                <a class="nav-link" href="{% url 'Blog:index2' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">文章类型 / Categories</a>
+                    <div class="dropdown-menu navbar-dark bg-primary">
+                        {% get_categories as category_list %}{% for category in category_list %}<a class='dropdown-item'href="{% url 'Blog:category' category.pk %}">{{ category.name }}</a>{% endfor %}
+                    </div>
+        </li>
+        <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">标签 / Tags</a>
+                    <div class="dropdown-menu navbar-dark bg-primary">
+                        {% get_tags as tag_list %}{% for tag in tag_list %}<a class='dropdown-item'href="{% url 'Blog:tag' tag.pk %}">{{ tag.name }}</a>{% endfor %}
+                    </div>
+        </li>
+    {% endblock navitem %}
+
     {% block slider %}
-        <h1 class="text-center">分类浏览</h1>
-        <p class="lead text-center">Browse by Category</p>
+    <div class="carousel-item active">
+        <div class="jumbotron">
+            <h1 class="text-center">分类浏览</h1>
+            <p class="lead text-center">Browse by Category</p>
+        </div>
+    </div>
     {% endblock slider %}
 
     {% block article %}

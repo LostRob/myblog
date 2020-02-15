@@ -20,7 +20,8 @@
     <![endif]-->
     {% block css %}{% endblock %}
   </head>
-  <body>
+  <body  style="background-image: url({% static 'blog/images/back.jpg' %});
+        background-size:100% 200%;background-repeat:no-repeat;">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -60,5 +61,6 @@
     <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+
   </body>
 </html>
