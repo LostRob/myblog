@@ -31,7 +31,7 @@
 
                         {% if request.session.is_login %}
                             <div>
-                            <h3>你好,{{ request.session.user_name }}！欢迎回来！<img src ='{% static 'Blog/images/userpic.gif' %}' width="60" height="60" alt="user" class="userpic"/></h3>
+                            <h3>{{ request.session.user_name }},欢迎回来！<img src ='{% static 'Blog/images/userpic.gif' %}' width="60" height="60" alt="user" class="userpic"/></h3>
                             <li><a href="/logout/">登出</a></li>
                             </div>
                         {% else %}
@@ -40,7 +40,7 @@
                             <li><a href="/login/">登录</a></li>
                             <li><a href="/register/">注册</a></li>
                             </div>
-
+                        {% endif %}
                             <!--
                             <div class="col-6 text-right">
                             <ul class="navbar-nav mr-right">
@@ -63,8 +63,6 @@
                             </ul>
                             </div>
                             -->
-                        {% endif %}
-
                     </div>
                 </div>
             </div>
@@ -165,15 +163,22 @@
 
                         <!-- 原slider-->
                         <div class="carousel-item active">
+                        {% if request.session.is_login %}
                             <div class="jumbotron">
                                 <!--
                                 <h1 class="text-center">Hello こんにちは привет 안녕하세요 你好 Hallo Bonjour Olá Hola Ciao مرحبا สวัสดี မင်္ဂလာပါ Xin chào Aloha Hej Merhaba</h1>
                                 -->
-                                <h1 class="text-center">你好</h1>
-                                <p class="lead text-center">Welcome</p>
-                                <p class="lead text-center">
-                                </p>
+                                <h1 class="text-center">你好,{{ request.session.user_name }}</h1>
+                                <p class="lead text-center">Welcome,{{ request.session.user_name }}</p>
                             </div>
+                        {% else %}
+                            <div class="jumbotron">
+                                {% block slider %}
+                                <h1 class="text-center">你好,旅行者</h1>
+                                <p class="lead text-center">Welcome,traveler</p>
+                                {% endblock slider %}
+                            </div>
+                        {% endif %}
 
                         </div>
                         <!--
@@ -261,7 +266,7 @@
                         <!--
                         <p class="article-meta">Posted on <strong %="the Month & & the Day">{{ blog.created_time }}</strong>by <strong rel="author">Robert</strong></p>
                         -->
-                        <p class="article-meta">Posted by <strong href="#" rel="author">Robert</strong> · Filed under <strong>{{ blog.category.name }}</strong></p>
+                        <p class="article-meta">Posted by <strong href="#" rel="author">{{ blog.author }}</strong> · Filed under <strong>{{ blog.category.name }}</strong></p>
                         <div class = 'clr'></div>
                         <p>{{ blog.excerpt }}</p>
 

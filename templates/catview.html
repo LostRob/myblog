@@ -9,6 +9,11 @@
     <meta charset="UTF-8">
 </head>
 <body>
+    {% block slider %}
+        <h1 class="text-center">分类浏览</h1>
+        <p class="lead text-center">Browse by Category</p>
+    {% endblock slider %}
+
     {% block article %}
     {% for blog in blog_list%}
     <article>
@@ -48,19 +53,23 @@
         <a href="{% url 'Blog:detail' blog.id %}" class="btn btn-secondary">Comments</a>
     </article>
     {% endfor %}
-
     {% endblock %}
+
     {% block page %}
     {% endblock %}
 
     {% block side %}
-
-
     <div class="sidebar-box">
         <h4>目录 / Categories</h4>
         <div class="list-group list-group-root">
             <a class="list-group-item" href="{% url 'Blog:index2' %}">主页 / Home</a>
             <!--<a class="list-group-item" href="blogging.html">发布博客 / Post Blogs</a>-->
+
+            {% if request.session.is_login %}
+                <a class="list-group-item" href="{% url 'Blog:blogging' %}">创作 / Write</a>
+            {% else %}
+                <a class="list-group-item" href="/login/">创作 / Write</a>
+            {% endif %}
 
             <a class="list-group-item active" href="{% url 'Blog:index2' %}">文章类型 / Categories</a>
             <div class='list-group'>

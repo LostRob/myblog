@@ -7,31 +7,50 @@
     <div class="row">
         <div class="col-12">
             <br>
-            <!-- 提交文章的表单 -->
-            <form method="post" action=".">
+            <!-- 提交文章的表单 {% url 'Blog:blogging' %}-->
+            <form method="post">
                 <!-- Django中需要POST数据的地方都必须有csrf_token -->
                 {% csrf_token %}
+
                 <h2 class="text-center">欢迎注册</h2>
-              <div class="form-group">
-                  {{ article_post_form.title.label_tag }}
-                  {{ article_post_form.title}}
-              </div>
-              <div class="form-group">
-                  {{ article_post_form.excerpt.label_tag }}
-                  {{ article_post_form.excerpt }}
-              </div>
-              <div class="form-group">
-                  {{ article_post_form.body.label_tag }}
-                  {{ article_post_form.body }}
-              </div>
-              <div class="form-group">
-                  {{ article_post_form.tags.label_tag }}
-                  {{ article_post_form.tag }}
-              </div>
-              <div class="form-group">
-                  {{ article_post_form.category.label_tag }}
-                  {{ article_post_form.category }}
-              </div>
+                  <div class="form-group">
+                      {{ article_post_form.title.label_tag }}
+                      {{ article_post_form.title}}
+                  </div>
+                  <div class="form-group">
+                      {{ article_post_form.excerpt.label_tag }}
+                      {{ article_post_form.excerpt }}
+                  </div>
+                  <div class="form-group">
+                      {{ article_post_form.body.label_tag }}
+                      {{ article_post_form.body }}
+                  </div>
+                  <div class="form-group">
+                      {{ article_post_form.tags.label_tag }}
+                      {{ article_post_form.tags}}
+                  </div>
+                  <div class="form-group">
+                      {{ article_post_form.category.label_tag }}
+                      {{ article_post_form.category }}
+                  </div>
+                    <div class="form-group">
+                      {{ article_post_form.views.label_tag }}
+                      {{ article_post_form.views }}
+                    </div>
+                <div class="form-group">
+                      {{ article_post_form.created_time.label_tag }}
+                      {{ article_post_form.created_time }}
+                </div>
+                <div class="form-group">
+                      {{ article_post_form.modified_time.label_tag }}
+                      {{ article_post_form.modified_time }}
+                  </div>
+                <div class="form-group">
+                      {{ article_post_form.author.label_tag }}
+                      {{ article_post_form.author }}
+                  </div>
+
+
 
                 <!-- 提交按钮 -->
                 <button type="submit" class="btn btn-primary">完成</button>

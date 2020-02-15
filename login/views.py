@@ -24,9 +24,9 @@ def login(request):
                     request.session['user_name'] = user.name
                     return redirect('/index/')
                 else:
-                    message = "密码不正确！"
+                    message = "用户不存在/密码不正确！"
             except:
-                message = "用户不存在！"
+                message = "用户不存在/密码不正确！"
         return render(request, 'login/login.html', locals())
 
     login_form = UserForm()

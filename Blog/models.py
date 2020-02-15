@@ -22,7 +22,7 @@ class Blog(models.Model):
     created_time = models.DateTimeField(auto_now_add=True,null=True)
     modified_time = models.DateTimeField(auto_now=True,null=True)
     excerpt = models.CharField(max_length=200, blank=True)  # 文章摘要，可为空
-    category = models.ForeignKey(Category, on_delete=True,blank=True)  # ForeignKey表示1对多（多个post对应1个category）
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL,blank=True,null=True)  # ForeignKey表示1对多（多个post对应1个category）
     tags = models.ManyToManyField(Tag, blank=True)
     views = models.PositiveIntegerField(default=0)  # 阅读量
     # orderalg = models.PositiveIntegerField(default=0)  # 加权分数

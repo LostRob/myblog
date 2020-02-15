@@ -92,9 +92,13 @@ def blogging(request):
             title = article_post_form.cleaned_data['title']
             excerpt = article_post_form.cleaned_data['excerpt']
             body = article_post_form.cleaned_data['body']
-            # tag = article_post_form.cleaned_data['tag']
-            # category = article_post_form.cleaned_data['category']
-            new_blog = Blog.objects.create(title=title,excerpt=excerpt,body=body)
+            category = article_post_form.cleaned_data['category']
+            tags = article_post_form.cleaned_data['tags']
+            author = article_post_form.cleaned_data['author']
+            views = article_post_form.cleaned_data['views']
+            created_time = article_post_form.cleaned_data['created_time']
+            modified_time = article_post_form.cleaned_data['modified_time']
+            new_blog = Blog.objects.create(title=title,excerpt=excerpt,body=body,category=category,views=views,author=author,created_time=created_time,modified_time=modified_time)
             # 保存数据，但暂时不提交到数据库中
             # new_blog = article_post_form.save(commit=False)
             # new_blog.title = title
@@ -105,18 +109,19 @@ def blogging(request):
             # 指定数据库中 id=1 的用户为作者
             # new_blog.author = User.objects.get(id=1)
             # 将新文章保存到数据库中
-            # new_blog.save()
             # 完成后返回到文章列表
-            # return redirect("Blog:detail")
-            return render(request, 'blogging.html', locals())
+            a = '/detail/detail-%d/' %new_blog.id
+            return redirect(a)
+            # return render(request, 'blogging.html', locals())
         # 如果数据不合法，返回错误信息
         else:
-            message = "两次输入的密码不同！"
+            message = "数据不合法"
             return render(request, 'blogging.html',locals())
     # 如果用户请求获取数据
-    # 创建表单类实例
-    article_post_form = ArticlePostForm()
-    # 返回模板
+    else:
+        # 创建表单类实例
+        article_post_form = ArticlePostForm()
+     # 返回模板
     message = "两次输入的密码相同！"
     return render(request, 'blogging.html', locals())
 
